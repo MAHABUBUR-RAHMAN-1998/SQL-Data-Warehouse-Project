@@ -68,12 +68,12 @@ CREATE TABLE bronze.crm_sales_details
     sls_ord_num   NVARCHAR(50)  ,               -- Sales order number (  transaction identifier)
     sls_prd_key   NVARCHAR(50),              -- Product key sold, links to bronze.crm_prd_info.prd_key
     sls_cust_id   INT,                       -- Customer ID, links to bronze.crm_cust_info.cst_id
-    sls_order_dt  DATE,                      -- Date the order was placed
-    sls_ship_dt   DATE,                      -- Date the order was shipped
-    sls_due_dt    DATE,                      -- Date the order payment/delivery was due
-    sls_sales     FLOAT,                     -- Total sales amount for the line item
+    sls_order_dt  INT,                      -- Date the order was placed
+    sls_ship_dt   INT,                      -- Date the order was shipped
+    sls_due_dt    INT,                      -- Date the order payment/delivery was due
+    sls_sales     INT,                     -- Total sales amount for the line item
     sls_quantity  INT,                       -- Quantity of units sold
-    sls_price     FLOAT                      -- Unit price of the product sold
+    sls_price     INT                      -- Unit price of the product sold
 );
 GO
 
