@@ -31,7 +31,7 @@ GO
 DROP TABLE IF EXISTS bronze.crm_cust_info;
 CREATE TABLE bronze.crm_cust_info
 (
-    cst_id              INT PRIMARY KEY NOT NULL,   -- Unique customer ID (CRM primary key)
+    cst_id              INT ,                        -- customer ID 
     cst_key             NVARCHAR(50),                -- Business/natural key used to match with other systems
     cst_firstname       NVARCHAR(50),                -- Customer first name
     cst_lastname        NVARCHAR(50),                -- Customer last name
@@ -48,7 +48,7 @@ GO
 DROP TABLE IF EXISTS bronze.crm_prd_info;
 CREATE TABLE bronze.crm_prd_info
 (
-    prd_id      INT PRIMARY KEY NOT NULL,   -- Unique product ID (CRM primary key)
+    prd_id      INT  ,                      -- product ID (CRM  )
     prd_key     NVARCHAR(50),               -- Business/natural product key, used to link to sales & ERP category data
     prd_nm      NVARCHAR(50),               -- Product name
     prd_cost    FLOAT,                      -- Product cost
@@ -65,7 +65,7 @@ GO
 DROP TABLE IF EXISTS bronze.crm_sales_details;
 CREATE TABLE bronze.crm_sales_details
 (
-    sls_ord_num   NVARCHAR(50) PRIMARY KEY,  -- Sales order number (unique transaction identifier)
+    sls_ord_num   NVARCHAR(50)  ,               -- Sales order number (  transaction identifier)
     sls_prd_key   NVARCHAR(50),              -- Product key sold, links to bronze.crm_prd_info.prd_key
     sls_cust_id   INT,                       -- Customer ID, links to bronze.crm_cust_info.cst_id
     sls_order_dt  DATE,                      -- Date the order was placed
@@ -85,7 +85,7 @@ GO
 DROP TABLE IF EXISTS bronze.erp_CUST_AZ12;
 CREATE TABLE bronze.erp_CUST_AZ12
 (
-    CID   NVARCHAR(50) PRIMARY KEY,  -- Customer ID from ERP, used to join back to CRM customer key
+    CID   NVARCHAR(50)  ,  -- Customer ID from ERP, used to join back to CRM customer key
     BDATE DATE,                      -- Customer birthdate
     GEN   NVARCHAR(50)               -- Gender (raw, unstandardized value from ERP)
 );
@@ -98,7 +98,7 @@ GO
 DROP TABLE IF EXISTS bronze.erp_LOC_A101;
 CREATE TABLE bronze.erp_LOC_A101
 (
-    CID   NVARCHAR(50) PRIMARY KEY,  -- Customer ID from ERP, used to join back to CRM customer key
+    CID   NVARCHAR(50)  ,  -- Customer ID from ERP, used to join back to CRM customer key
     CNTRY NVARCHAR(50)               -- Customer's country of residence
 );
 GO
@@ -110,7 +110,7 @@ GO
 DROP TABLE IF EXISTS bronze.erp_PX_CAT_G1V2;
 CREATE TABLE bronze.erp_PX_CAT_G1V2
 (
-    ID          NVARCHAR(20) PRIMARY KEY,  -- Product category ID, links to bronze.crm_prd_info.prd_key (category segment)
+    ID          NVARCHAR(20)  ,  -- Product category ID, links to bronze.crm_prd_info.prd_key (category segment)
     CAT         NVARCHAR(50),              -- Product category name
     MAINTENANCE NVARCHAR(50)               -- Maintenance flag/type for the product category
 );
