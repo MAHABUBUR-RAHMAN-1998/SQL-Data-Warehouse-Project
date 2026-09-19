@@ -37,7 +37,7 @@ CREATE TABLE bronze.crm_cust_info
     cst_lastname        NVARCHAR(50),                -- Customer last name
     cst_marital_status  NVARCHAR(50),                -- Marital status (raw, unstandardized value from CRM)
     cst_gndr            NVARCHAR(15),                -- Gender (raw, unstandardized value from CRM)
-    cst_create_date     DATE                         -- Date the customer record was created in CRM
+    cst_create_date     Date                         -- Date the customer record was created in CRM
 );
 GO
 
@@ -112,6 +112,7 @@ CREATE TABLE bronze.erp_PX_CAT_G1V2
 (
     ID          NVARCHAR(20)  ,  -- Product category ID, links to bronze.crm_prd_info.prd_key (category segment)
     CAT         NVARCHAR(50),              -- Product category name
+    SUBCAT 	NVARCHAR(50), 		   -- Product SubCategroy name
     MAINTENANCE NVARCHAR(50)               -- Maintenance flag/type for the product category
 );
 GO
