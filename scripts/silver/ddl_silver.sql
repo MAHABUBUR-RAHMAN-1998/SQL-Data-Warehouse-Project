@@ -49,7 +49,8 @@ DROP TABLE IF EXISTS silver.crm_prd_info;
 CREATE TABLE silver.crm_prd_info
 (
     prd_id      INT  ,                      -- product ID (CRM  )
-    prd_key     NVARCHAR(50),               -- Business/natural product key, used to link to sales & ERP category data
+    prd_key     NVARCHAR(50),               -- Business/natural product key
+    cat_ID      NVARCHAR(50),               -- used to link ERP category data
     prd_nm      NVARCHAR(50),               -- Product name
     prd_cost    FLOAT,                      -- Product cost
     prd_line    NVARCHAR(10),               -- Product line/category code
@@ -65,12 +66,12 @@ GO
 DROP TABLE IF EXISTS silver.crm_sales_details;
 CREATE TABLE silver.crm_sales_details
 (
-    sls_ord_num   NVARCHAR(50)  ,               -- Sales order number (  transaction identifier)
+    sls_ord_num   NVARCHAR(50)  ,            -- Sales order number (transaction identifier)
     sls_prd_key   NVARCHAR(50),              -- Product key sold, links to silver.crm_prd_info.prd_key
     sls_cust_id   INT,                       -- Customer ID, links to silver.crm_cust_info.cst_id
-    sls_order_dt  INT,                      -- Date the order was placed
-    sls_ship_dt   INT,                      -- Date the order was shipped
-    sls_due_dt    INT,                      -- Date the order payment/delivery was due
+    sls_order_dt  DATE,                      -- Date the order was placed
+    sls_ship_dt   DATE,                      -- Date the order was shipped
+    sls_due_dt    DATE,                      -- Date the order payment/delivery was due
     sls_sales     INT,                     -- Total sales amount for the line item
     sls_quantity  INT,                       -- Quantity of units sold
     sls_price     INT                      -- Unit price of the product sold
